@@ -1,0 +1,40 @@
+# Open edX Platform Architecture Guide
+
+## Overview
+The Open edX Platform is a modular monolith written in Python (Django) and JavaScript, providing two main services:
+- **CMS (Content Management Service)**: Powers Open edX Studio for content authoring
+- **LMS (Learning Management Service)**: Delivers learning content to students
+
+## Core Directory Structure
+
+### Main Services
+- [lms/](mdc:lms/) - Learning Management System (student-facing)
+- [cms/](mdc:cms/) - Content Management System (Studio, instructor-facing)
+- [common/](mdc:common/) - Shared code between LMS and CMS
+- [openedx/](mdc:openedx/) - Core Open edX framework and utilities
+
+### Key Configuration Files
+- [manage.py](mdc:manage.py) - Main Django management script for both LMS and CMS
+- [package.json](mdc:package.json) - Node.js dependencies and build scripts
+- [requirements/](mdc:requirements/) - Python dependencies
+- [webpack.*.config.js](mdc:webpack.common.config.js) - Webpack build configurations
+
+### Development Commands
+- `./manage.py lms runserver 18000` - Start LMS development server
+- `./manage.py cms runserver 18010` - Start CMS development server
+- `npm run build` - Build production assets
+- `npm run build-dev` - Build development assets
+
+## Django Apps Structure
+Each service (LMS/CMS) contains:
+- `djangoapps/` - Django applications
+- `envs/` - Environment-specific settings
+- `static/` - Static assets (CSS, JS, images)
+- `templates/` - Django templates
+- `lib/` - Service-specific utilities
+
+## Technology Stack
+- **Backend**: Python 3.11, Django, MySQL 8.0, MongoDB 7.x
+- **Frontend**: JavaScript, React, Backbone.js, SCSS
+- **Build Tools**: Webpack, npm, pip
+- **Testing**: Jest, Karma, pytest

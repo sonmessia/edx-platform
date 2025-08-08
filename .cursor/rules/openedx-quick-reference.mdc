@@ -1,0 +1,90 @@
+# Open edX Platform Quick Reference
+
+## 🚀 Quick Start Commands
+
+### Development Servers
+```bash
+# Start LMS (student interface)
+./manage.py lms runserver 18000
+
+# Start CMS/Studio (instructor interface)
+./manage.py cms runserver 18010
+```
+
+### Asset Building
+```bash
+# Development build
+npm run build-dev
+
+# Production build
+npm run build
+
+# Watch mode
+npm run watch
+```
+
+### Testing
+```bash
+# Python tests
+pytest
+
+# Frontend tests
+npm run test
+
+# Specific test suites
+npm run test-lms
+npm run test-cms
+```
+
+### Database Operations
+```bash
+# Run migrations
+./manage.py lms migrate
+./manage.py cms migrate
+
+# Create superuser
+./manage.py lms createsuperuser
+```
+
+## 📁 Key Directories
+
+- **[lms/](mdc:lms/)** - Learning Management System (student-facing)
+- **[cms/](mdc:cms/)** - Content Management System (Studio, instructor-facing)
+- **[common/](mdc:common/)** - Shared code between LMS and CMS
+- **[openedx/](mdc:openedx/)** - Core Open edX framework
+- **[xmodule/](mdc:xmodule/)** - XBlock modules and content types
+- **[requirements/](mdc:requirements/)** - Python dependencies
+- **[themes/](mdc:themes/)** - Custom themes and styling
+
+## 🔧 Key Configuration Files
+
+- **[manage.py](mdc:manage.py)** - Main Django management script
+- **[package.json](mdc:package.json)** - Node.js dependencies and scripts
+- **[webpack.common.config.js](mdc:webpack.common.config.js)** - Webpack configuration
+- **[pylintrc](mdc:pylintrc)** - Python code quality settings
+- **[jest.config.js](mdc:jest.config.js)** - JavaScript testing configuration
+
+## 🏗️ Architecture Overview
+
+Open edX is a **modular monolith** with:
+- **Backend**: Python 3.11 + Django + MySQL 8.0 + MongoDB 7.x
+- **Frontend**: JavaScript + React + Backbone.js + SCSS
+- **Build System**: Webpack + npm + pip
+- **Testing**: pytest + Jest + Karma
+
+## 📚 Related Rules
+
+- **Architecture**: [openedx-architecture.mdc](mdc:.cursor/rules/openedx-architecture.mdc)
+- **Python Development**: [python-development.mdc](mdc:.cursor/rules/python-development.mdc)
+- **Frontend Development**: [frontend-development.mdc](mdc:.cursor/rules/frontend-development.mdc)
+- **Development Workflow**: [development-workflow.mdc](mdc:.cursor/rules/development-workflow.mdc)
+- **Testing Guidelines**: [testing-guidelines.mdc](mdc:.cursor/rules/testing-guidelines.mdc)
+- **Configuration Management**: [configuration-management.mdc](mdc:.cursor/rules/configuration-management.mdc)
+- **Deployment & Operations**: [deployment-and-operations.mdc](mdc:.cursor/rules/deployment-and-operations.mdc)
+
+## 🌐 Resources
+
+- **Documentation**: https://docs.openedx.org/projects/edx-platform
+- **Community**: https://discuss.openedx.org
+- **GitHub**: https://github.com/openedx/edx-platform
+- **Getting Started**: https://openedx.org/get-started/

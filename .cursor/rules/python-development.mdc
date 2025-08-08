@@ -1,0 +1,35 @@
+# Python Development Guidelines for Open edX
+
+## Code Style and Standards
+- Follow PEP 8 style guidelines
+- Use pylint for code quality checks (see [pylintrc](mdc:pylintrc))
+- Use mypy for type checking (see [mypy.ini](mdc:mypy.ini))
+- Import order: standard library, third-party, local imports
+
+## Django Best Practices
+- Use Django's built-in ORM for database operations
+- Follow Django's MVT (Model-View-Template) pattern
+- Use Django's form validation and CSRF protection
+- Implement proper URL routing with descriptive names
+
+## Open edX Specific Patterns
+- Use `openedx.core.lib` utilities for common functionality
+- Follow the modular monolith architecture
+- Use Django apps for feature organization
+- Implement proper logging using Django's logging framework
+
+## Testing Guidelines
+- Write unit tests for all new functionality
+- Use pytest for testing (see [conftest.py](mdc:conftest.py))
+- Mock external dependencies
+- Test both LMS and CMS when applicable
+
+## Database Migrations
+- Always create migrations for model changes
+- Test migrations on development data
+- Use `./manage.py lms migrate` and `./manage.py cms migrate`
+
+## Environment Configuration
+- Use environment-specific settings in `lms/envs/` and `cms/envs/`
+- Follow the pattern in [manage.py](mdc:manage.py) for service selection
+- Use environment variables for sensitive configuration

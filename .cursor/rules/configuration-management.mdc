@@ -1,0 +1,62 @@
+# Configuration Management for Open edX
+
+## Environment Configuration
+
+### Django Settings
+- **LMS Settings**: Located in [lms/envs/](mdc:lms/envs/)
+- **CMS Settings**: Located in [cms/envs/](mdc:cms/envs/)
+- **Common Settings**: Located in [openedx/envs/](mdc:openedx/envs/)
+- Use environment-specific settings files for different deployments
+
+### Service Selection
+The [manage.py](mdc:manage.py) script handles service selection:
+```bash
+# Run LMS with specific settings
+./manage.py lms --settings=production runserver
+
+# Run CMS with specific settings
+./manage.py cms --settings=development runserver
+```
+
+## Key Configuration Files
+
+### Python Configuration
+- [setup.py](mdc:setup.py) - Package configuration and dependencies
+- [setup.cfg](mdc:setup.cfg) - Python tool configurations
+- [pylintrc](mdc:pylintrc) - Code quality settings
+- [mypy.ini](mdc:mypy.ini) - Type checking configuration
+- [tox.ini](mdc:tox.ini) - Testing configuration
+
+### Frontend Configuration
+- [package.json](mdc:package.json) - Node.js dependencies and scripts
+- [webpack.common.config.js](mdc:webpack.common.config.js) - Webpack base configuration
+- [webpack.dev.config.js](mdc:webpack.dev.config.js) - Development build config
+- [webpack.prod.config.js](mdc:webpack.prod.config.js) - Production build config
+- [.babelrc](mdc:.babelrc) - Babel transpilation settings
+
+### Database Configuration
+- Configure MySQL databases in Django settings
+- Use separate databases for LMS and CMS
+- Configure MongoDB for content storage
+- Set up Memcached for caching
+
+## Environment Variables
+Common environment variables:
+- `DJANGO_SETTINGS_MODULE` - Django settings module
+- `SERVICE_VARIANT` - Service type (lms/cms)
+- `EDX_PLATFORM_SETTINGS` - Platform-specific settings
+- Database connection strings
+- API keys and secrets
+
+## Development vs Production
+- **Development**: Use `devstack` settings by default
+- **Production**: Use environment-specific production settings
+- **Testing**: Use test-specific configurations
+- **Staging**: Use staging environment configurations
+
+## Security Configuration
+- Store sensitive data in environment variables
+- Use Django's security settings
+- Configure HTTPS and SSL certificates
+- Set up proper authentication and authorization
+- Use Django's CSRF protection

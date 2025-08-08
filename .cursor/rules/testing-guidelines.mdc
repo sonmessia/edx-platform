@@ -1,0 +1,85 @@
+# Testing Guidelines for Open edX
+
+## Python Testing (Backend)
+
+### Test Structure
+- Use pytest for all Python testing (see [conftest.py](mdc:conftest.py))
+- Place tests in `tests/` directories within Django apps
+- Use descriptive test function names
+- Group related tests in test classes
+
+### Test Types
+- **Unit Tests**: Test individual functions and methods
+- **Integration Tests**: Test Django views and API endpoints
+- **Model Tests**: Test Django models and database operations
+- **Form Tests**: Test form validation and processing
+
+### Testing Best Practices
+```python
+# Example test structure
+import pytest
+from django.test import TestCase
+from django.urls import reverse
+
+class TestMyFeature(TestCase):
+    def setUp(self):
+        # Setup test data
+        pass
+    
+    def test_feature_works(self):
+        # Test implementation
+        pass
+```
+
+### Running Tests
+```bash
+# Run all tests
+pytest
+
+# Run specific test file
+pytest path/to/test_file.py
+
+# Run with coverage
+pytest --cov=module_name
+```
+
+## JavaScript Testing (Frontend)
+
+### Test Structure
+- Use Jest for unit testing (see [jest.config.js](mdc:jest.config.js))
+- Use Karma for browser testing
+- Place tests alongside source files or in `test/` directories
+
+### Test Types
+- **Unit Tests**: Test individual functions and components
+- **Component Tests**: Test React components
+- **Integration Tests**: Test component interactions
+
+### Running Frontend Tests
+```bash
+# Run all frontend tests
+npm run test
+
+# Run specific test suites
+npm run test-lms
+npm run test-cms
+npm run test-common
+```
+
+## Test Configuration Files
+- [conftest.py](mdc:conftest.py) - Global pytest configuration
+- [jest.config.js](mdc:jest.config.js) - Jest configuration
+- [cms/pytest.ini](mdc:cms/pytest.ini) - CMS-specific pytest settings
+- Karma config files in static directories
+
+## Mocking and Fixtures
+- Use pytest fixtures for test data setup
+- Mock external dependencies and API calls
+- Use Django's test database for database tests
+- Create factory classes for complex test data
+
+## Coverage Requirements
+- Aim for high test coverage (>80%)
+- Focus on critical business logic
+- Test both happy path and error cases
+- Test edge cases and boundary conditions

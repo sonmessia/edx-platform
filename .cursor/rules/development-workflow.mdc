@@ -1,0 +1,77 @@
+# Open edX Development Workflow
+
+## Getting Started
+1. **Environment Setup**: Ensure Python 3.11, Node.js (see [.nvmrc](mdc:.nvmrc)), MySQL 8.0, MongoDB 7.x
+2. **Dependencies**: Install Python and Node.js dependencies
+3. **Database Setup**: Create MySQL databases and run migrations
+4. **Build Assets**: Run `npm run build-dev` for development
+
+## Common Development Tasks
+
+### Starting Development Servers
+```bash
+# Start LMS (student-facing)
+./manage.py lms runserver 18000
+
+# Start CMS/Studio (instructor-facing)
+./manage.py cms runserver 18010
+```
+
+### Database Operations
+```bash
+# Run migrations
+./manage.py lms migrate
+./manage.py cms migrate
+
+# Create superuser
+./manage.py lms createsuperuser
+```
+
+### Asset Building
+```bash
+# Development build
+npm run build-dev
+
+# Production build
+npm run build
+
+# Watch mode for development
+npm run watch
+```
+
+### Testing
+```bash
+# Python tests
+pytest
+
+# Frontend tests
+npm run test
+
+# Specific test suites
+npm run test-lms
+npm run test-cms
+```
+
+## File Organization Patterns
+
+### Django Apps
+- New features should be Django apps in `lms/djangoapps/` or `cms/djangoapps/`
+- Shared functionality goes in `common/djangoapps/`
+- Follow Django app structure: models, views, urls, admin, tests
+
+### Static Assets
+- JavaScript: `static/js/` directories
+- CSS/SCSS: `static/sass/` directories
+- Images: `static/images/` directories
+- Templates: `templates/` directories
+
+### Configuration
+- Environment settings: `lms/envs/` and `cms/envs/`
+- URL routing: `urls.py` files
+- Webpack config: `webpack.*.config.js` files
+
+## Debugging Tips
+- Use Django debug toolbar for backend debugging
+- Use browser dev tools for frontend debugging
+- Check logs in `test_root/log/` directory
+- Use `print()` or logging for Python debugging

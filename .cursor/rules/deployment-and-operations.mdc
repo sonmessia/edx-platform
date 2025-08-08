@@ -1,0 +1,81 @@
+# Deployment and Operations for Open edX
+
+## Production Deployment
+
+### Recommended Approach
+- Use **Tutor** (Docker-based distribution) for production deployments
+- Follow the [Site Ops documentation](https://docs.openedx.org/projects/edx-platform)
+- Use service providers for managed hosting when possible
+
+### System Requirements
+- **OS**: Ubuntu 24.04 (recommended)
+- **Python**: 3.11
+- **Node.js**: Version specified in [.nvmrc](mdc:.nvmrc)
+- **Databases**: MySQL 8.0, MongoDB 7.x
+- **Cache**: Memcached
+- **Web Server**: Nginx/Apache with Gunicorn
+
+### Deployment Steps
+1. **Environment Setup**: Install system dependencies
+2. **Code Deployment**: Deploy application code
+3. **Database Setup**: Run migrations and seed data
+4. **Asset Building**: Build production assets with `npm run build`
+5. **Service Configuration**: Configure web server and process manager
+6. **SSL Setup**: Configure HTTPS certificates
+7. **Monitoring**: Set up logging and monitoring
+
+## Development Deployment
+
+### Local Development
+- Use `./manage.py lms runserver 18000` for LMS
+- Use `./manage.py cms runserver 18010` for CMS
+- Use `npm run build-dev` for development assets
+- Use `npm run watch` for asset watching
+
+### Docker Development
+- Use Tutor for containerized development
+- Follow the development mode documentation
+- Use Docker Compose for local services
+
+## Monitoring and Logging
+
+### Log Management
+- Check logs in `test_root/log/` directory
+- Use Django's logging framework
+- Configure log rotation and retention
+- Monitor application and system logs
+
+### Performance Monitoring
+- Monitor database performance
+- Track frontend asset loading times
+- Monitor API response times
+- Set up alerting for critical issues
+
+## Backup and Recovery
+
+### Database Backups
+- Regular MySQL database backups
+- MongoDB content store backups
+- Test backup restoration procedures
+- Store backups securely
+
+### Application Backups
+- Backup configuration files
+- Backup static assets
+- Backup user uploads
+- Document recovery procedures
+
+## Security Considerations
+
+### Production Security
+- Use HTTPS everywhere
+- Implement proper authentication
+- Regular security updates
+- Monitor for security vulnerabilities
+- Use environment variables for secrets
+
+### Access Control
+- Implement role-based access control
+- Use Django's permission system
+- Monitor user access patterns
+- Implement audit logging

@@ -1,0 +1,45 @@
+# Frontend Development Guidelines for Open edX
+
+## JavaScript/TypeScript Standards
+- Use ES6+ features when supported
+- Follow the patterns in [package.json](mdc:package.json) for build scripts
+- Use React for new components (React 16.14.0)
+- Use Backbone.js for legacy components
+- Implement proper error handling and loading states
+
+## Build System
+- Use Webpack for bundling (see [webpack.common.config.js](mdc:webpack.common.config.js))
+- Run `npm run build-dev` for development builds
+- Run `npm run build` for production builds
+- Use the watch commands for development: `npm run watch`
+
+## Styling Guidelines
+- Use SCSS for styling (see [sass/](mdc:lms/static/sass/) directories)
+- Follow BEM methodology for CSS class naming
+- Use the edX UI toolkit components when possible
+- Implement responsive design patterns
+- Use CSS variables for theming
+
+## Testing Frontend Code
+- Use Jest for unit testing (see [jest.config.js](mdc:jest.config.js))
+- Use Karma for browser testing
+- Run `npm run test` for all frontend tests
+- Test both LMS and CMS frontend components
+
+## Static Assets Organization
+- Place assets in appropriate `static/` directories
+- Use the asset pipeline for optimization
+- Follow the directory structure in [lms/static/](mdc:lms/static/) and [cms/static/](mdc:cms/static/)
+- Use webpack for modern JavaScript bundling
+
+## Template Development
+- Use Django templates for server-side rendering
+- Follow the template structure in [templates/](mdc:lms/templates/) directories
+- Use template inheritance and includes
+- Implement proper internationalization (i18n)
+
+## Micro-Frontends (MFEs)
+- New features should be built as MFEs when possible
+- Use React for MFE development
+- Follow the Open edX MFE architecture patterns
+- Implement proper communication between MFEs and the monolith
